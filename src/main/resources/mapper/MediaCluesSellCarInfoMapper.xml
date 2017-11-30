@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cristiano.dao.MediaCluesSellCarInfoMapper">
+  <resultMap id="carSellCluesMap" type="com.example.cristiano.domain.MediaCluesSellCarInfo">
+    <id column="id" property="id"/>
+    <result column="source_id" property="sourceId"/>
+    <result column="shop_ids" property="shopIds"/>
+    <result column="city_name" property="cityName"/>
+    <result column="car_name" property="carName"/>
+    <result column="is_repeat" property="isRepeat"/>
+    <result column="spm_first" property="spmFirst"/>
+    <result column="spm_second" property="spmSecond"/>
+    <result column="spm_third" property="spmThird"/>
+    <result column="first_boarding_time" property="firstBoardingTime"/>
+    <result column="assess_price" property="assessPrice"/>
+    <result column="remain_place" property="remainPlace"/>
+    <result column="clue_type" property="clueType"/>
+    <result column="car_name_souche" property="carNameSouche"/>
+    <result column="alipay_user_id" property="alipayUserId"/>
+    <result column="date_create" property="dateCreate"/>
+    <result column="date_update" property="dateUpdate"/>
+  </resultMap>
+  
+  <select id="queryCarSellClues" resultMap="carSellCluesMap" parameterType="java.util.HashMap">
+    SELECT * FROM media_clues_sell_car_info where debug= #{debug}
+  </select>
+
+</mapper>
