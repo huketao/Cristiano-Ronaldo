@@ -1,5 +1,6 @@
 package com.example.cristiano;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,6 +31,17 @@ public class CristianoApplicationTests {
 		List<MediaCluesSellCarInfo> resulList=mediaCluesSellCarInfoMapper.queryCarSellClues(params);
 		logger.info("resulList size:  "+resulList.size());
 		logger.info("first carSellClues: "+JSON.toJSONString(resulList.get(0)));
+		
+	}
+	
+	@Test
+	public void testAddCarSellClue() {
+		MediaCluesSellCarInfo vo=new MediaCluesSellCarInfo();
+		vo.setCarName("springboot 测试车辆名");
+		vo.setDateCreate(new Timestamp(System.currentTimeMillis()));
+		vo.setRemainPlace(2);
+		logger.info("新增线索返回影响行数： "+mediaCluesSellCarInfoMapper.addCarSellClue(vo)
+				+"对应生成主键值：  "+vo.getId());
 		
 	}
 

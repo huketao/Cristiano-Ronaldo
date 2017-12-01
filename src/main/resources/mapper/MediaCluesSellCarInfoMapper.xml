@@ -17,12 +17,86 @@
     <result column="clue_type" property="clueType"/>
     <result column="car_name_souche" property="carNameSouche"/>
     <result column="alipay_user_id" property="alipayUserId"/>
+    <result column="alipay_model_id" property="alipayModelId;"/>
     <result column="date_create" property="dateCreate"/>
     <result column="date_update" property="dateUpdate"/>
   </resultMap>
   
+  <sql id="blogColumns">  
+    <trim suffixOverrides=",">  
+        <if test="isRepeat != null and isRepeat!=''">is_repeat,</if>  
+        <if test="remainPlace != null">remain_place,</if>  
+        <if test="clueType != null and clueType !=''">clue_type,</if>  
+        <if test="debug != null">debug</if>  
+    </trim>  
+</sql>  
+  
+<sql id="blogValues">  
+    <trim suffixOverrides=",">  
+        <if test="isRepeat != null and isRepeat!=''">#{isRepeat},</if>  
+        <if test="remainPlace != null">#{remainPlace},</if>  
+        <if test="clueType != null and clueType !=''">#{clueType},</if>  
+        <if test="debug != null">#{debug}</if>  
+    </trim>
+</sql>
+  
   <select id="queryCarSellClues" resultMap="carSellCluesMap" parameterType="java.util.HashMap">
     SELECT * FROM media_clues_sell_car_info where debug= #{debug}
   </select>
+  
+  <insert id="addCarSellClue" parameterType="com.example.cristiano.domain.MediaCluesSellCarInfo" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO `media_clues_sell_car_info`
+				(`id`,
+				`source_id`,
+				`source`,
+				`media`,
+				`shop_ids`,
+				`phone`,
+				`city`,
+				`city_name`,
+				`car_name`,
+				`score`,
+				`spm`,
+				`spm_first`,
+				`spm_second`,
+				`spm_third`,
+				`first_boarding_time`,
+				`mileage`,
+				`brand`,
+				`series`,
+				`model`,
+				`assess_price`,
+				`car_name_souche`,
+				`alipay_user_id`,
+				`alipay_model_id`,
+				`date_create`,
+				`date_update`,<include refid="blogColumns"/>)
+				VALUES
+				(#{id},
+				#{sourceId},
+				#{source},
+				#{media},
+				#{shopIds},
+				#{phone},
+				#{city},
+				#{cityName},
+				#{carName},
+				#{score},
+				#{spm},
+				#{spmFirst},
+				#{spmSecond},
+				#{spmThird},
+				#{firstBoardingTime},
+				#{mileage},
+				#{brand},
+				#{series},
+				#{model},
+				#{assessPrice},
+				#{carNameSouche},
+				#{alipayUserId},
+				#{alipayModelId},
+				#{dateCreate},
+				#{dateUpdate},<include refid="blogValues"/>);
+  </insert>
 
 </mapper>

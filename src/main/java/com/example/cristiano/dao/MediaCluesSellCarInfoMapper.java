@@ -9,4 +9,5 @@ import com.example.cristiano.domain.MediaCluesSellCarInfo;
 @Mapper
 public interface MediaCluesSellCarInfoMapper {
 	public List<MediaCluesSellCarInfo> queryCarSellClues(Map<String, Object> params);
+	public int addCarSellClue (MediaCluesSellCarInfo mediaCluesSellCarInfo);
 }

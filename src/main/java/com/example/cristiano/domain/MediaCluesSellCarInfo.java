@@ -72,6 +72,11 @@ public class MediaCluesSellCarInfo {
 	 * 支付宝用户ID
 	 */
 	private String alipayUserId;
+	
+	/**
+	 * 支付宝车主平台车型ID
+	 */
+	private String alipayModelId;
 
 	private Timestamp dateCreate;
 	
@@ -283,6 +288,14 @@ public class MediaCluesSellCarInfo {
 
 	public void setAlipayUserId(String alipayUserId) {
 		this.alipayUserId = alipayUserId;
+	}
+	
+	public String getAlipayModelId() {
+		return alipayModelId;
+	}
+
+	public void setAlipayModelId(String alipayModelId) {
+		this.alipayModelId = alipayModelId;
 	}
 
 	public Timestamp getDateCreate() {
