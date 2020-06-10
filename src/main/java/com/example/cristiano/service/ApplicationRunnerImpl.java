@@ -15,6 +15,7 @@ public class ApplicationRunnerImpl implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		boolean debug=args.containsOption("debug");
 		logger.info("debug1:   "+debug);
+		logger.info("debug2:   "+debug);
 
 	}
 
